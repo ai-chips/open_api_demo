@@ -42,7 +42,9 @@ public class TtsExample {
     try {
       CloseableHttpResponse response = HttpClientUtil
           .doPostJsonStreaming(TTS_URL, params.toJSONString());
-      if(response.getEntity().isStreaming()){
+      Header firstHeader = response.getFirstHeader("Content-Type");
+      if(response.getEntity().isStreaming() &&
+          !firstHeader.getValue().contains("application/json")){
         InputStream input = response.getEntity().getContent();
         byte[] bytes = IOUtils.toByteArray(input);
         FileUtils.writeByteArrayToFile(new File(path),bytes);
