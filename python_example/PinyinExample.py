@@ -18,9 +18,8 @@ param = {}
 param['appkey'] = appkey
 param['signature'] = signature
 param['timestamp'] = timestamp
-param['request_type'] = 'frontend_g2p'
-param['text_type'] = 'json'
-param['text'] = '[[{"sentence":"你好小问"},{"sentence":"今天天气怎么样"}],[{"sentence":"好的,谢谢"}]]'
+param['uid'] = '真实用户的唯一id'
+param['text'] = '你好小问,今天天气怎么样!'
 
 requestParam = json.dumps(param)
 
